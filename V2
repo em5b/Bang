@@ -4400,6 +4400,7 @@ CMDs[#CMDs + 1] = {NAME = 'serverhop / shop', DESC = 'Teleports you to a differe
 CMDs[#CMDs + 1] = {NAME = 'joinplayer [username / ID] [place ID]', DESC = 'Joins a specific players server'}
 CMDs[#CMDs + 1] = {NAME = 'gameteleport / gametp [place ID]', DESC = 'Joins a game by ID'}
 CMDs[#CMDs + 1] = {NAME = 'antiidle / antiafk', DESC = 'Prevents the game from kicking you for being idle/afk'}
+CMDs[#CMDs + 1] = {NAME = 'Antibang / killbang', DESC = 'Prevents the game from kicking you for being idle/afk'}
 CMDs[#CMDs + 1] = {NAME = 'datalimit [num]', DESC = 'Set outgoing KBPS limit'}
 CMDs[#CMDs + 1] = {NAME = 'replicationlag / backtrack [num]', DESC = 'Set IncomingReplicationLag'}
 CMDs[#CMDs + 1] = {NAME = 'creatorid / creator', DESC = 'Notifies you the creators ID'}
@@ -4603,6 +4604,7 @@ CMDs[#CMDs + 1] = {NAME = 'attach [plr] (TOOL)', DESC = 'Attaches you to a playe
 CMDs[#CMDs + 1] = {NAME = 'kill [plr] (TOOL)', DESC = 'Kills a player (YOU NEED A TOOL)'}
 CMDs[#CMDs + 1] = {NAME = 'fastkill [plr] (TOOL)', DESC = 'Kills a player (less reliable) (YOU NEED A TOOL)'}
 CMDs[#CMDs + 1] = {NAME = 'handlekill / hkill [plr] (TOOL)', DESC = 'Kills a player using tool damage (YOU NEED A TOOL)'}
+CMDs[#CMDs + 1] = {NAME = 'King / No0 ', DESC = 'Kills a player using tool damage (YOU NEED A TOOL)'}
 CMDs[#CMDs + 1] = {NAME = 'bring [plr] (TOOL)', DESC = 'Brings a player (YOU NEED A TOOL)'}
 CMDs[#CMDs + 1] = {NAME = 'fastbring [plr] (TOOL)', DESC = 'Brings a player (less reliable) (YOU NEED A TOOL)'}
 CMDs[#CMDs + 1] = {NAME = 'teleport / tp [plr] [plr] (TOOL)', DESC = 'Teleports a player to another player (YOU NEED A TOOL)'}
@@ -8348,6 +8350,10 @@ addcmd('antiafk',{'antiidle'},function(args, speaker)
 	end
 end)
 
+addcmd('Antibang',{'KillBang'},function(args, speaker)
+       game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(47, -7235, 185)
+end)
+
 addcmd('datalimit',{},function(args, speaker)
 	if tonumber(args[1]) then
 		game:GetService("NetworkClient"):SetOutgoingKBPSLimit(args[1])
@@ -10981,6 +10987,11 @@ addcmd('handlekill', {'hkill'}, function(args, speaker)
 			notify("Handle Kill Stopped!", v.Name .. " died/left or you unequiped the tool!")
 		end)
 	end
+end)
+
+
+addcmd('King', {'No0'}, function(args, speaker)
+workspace.FallenPartsDestroyHeight = "nan"
 end)
 
 local hb = game:GetService("RunService").Heartbeat
